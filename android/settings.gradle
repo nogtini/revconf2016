@@ -1,0 +1,3 @@
+rootProject.name = 'revconf2016'
+
+include ':app'
