@@ -31,8 +31,8 @@ var THUMB_URLS = [
   require('./Thumbnails/superlike.png'),
   require('./Thumbnails/victory.png'),
 ];
-var NUM_SECTIONS = 5;
-var NUM_ROWS_PER_SECTION = 10;
+var NUM_SECTIONS = 6;
+var NUM_ROWS_PER_SECTION = 5;
 
 var Thumb = React.createClass({
   getInitialState: function() {
@@ -149,16 +149,6 @@ var ListViewPagingExample = React.createClass({
     );
   },
 
-  renderFooter: function() {
-    return (
-      <View style={styles.header}>
-        <Text onPress={() => console.log('Footer!')} style={styles.text}>
-          Table Footer
-        </Text>
-      </View>
-    );
-  },
-
   render: function() {
     return (
       <ListView
@@ -189,10 +179,10 @@ var styles = StyleSheet.create({
     backgroundColor: '#B0C4DE',
   },
   header: {
-    height: 40,
+    height: 250,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#3B5998',
+    backgroundColor: '#432F44',
     flexDirection: 'row',
   },
   text: {
@@ -210,16 +200,15 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 5,
-    marginVertical: 3,
+    borderTopWidth: 1,
+    borderColor: '#EBE4E5',
     padding: 5,
-    backgroundColor: '#EAEAEA',
-    borderRadius: 3,
+    backgroundColor: '#F8F5EF',
     paddingVertical: 10,
   },
   img: {
-    width: 64,
-    height: 64,
+    width: 32,
+    height: 32,
     marginHorizontal: 10,
     backgroundColor: 'transparent',
   },
@@ -228,7 +217,7 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     padding: 6,
-    backgroundColor: '#5890ff',
+    backgroundColor: '#A7425C',
   },
 });
 
