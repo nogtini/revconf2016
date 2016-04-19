@@ -58,8 +58,7 @@ var Thumb = React.createClass({
       <TouchableOpacity
         onPress={this._onPressThumb}
         style={[styles.buttonContents, {flexDirection: this.state.dir}]}>
-        <Image style={styles.img} source={THUMB_URLS[this.state.thumbIndex]} />
-        <Image style={styles.img} source={THUMB_URLS[this.state.thumbIndex]} />
+        <Text>Hey there hi there</Text>
         <Image style={styles.img} source={THUMB_URLS[this.state.thumbIndex]} />
         {this.state.dir === 'column' ?
           <Text>
@@ -176,7 +175,7 @@ var ListViewPagingExample = React.createClass({
 
 var styles = StyleSheet.create({
   listview: {
-    backgroundColor: '#B0C4DE',
+    backgroundColor: '#FFFFFF',
   },
   header: {
     height: 250,
@@ -198,18 +197,17 @@ var styles = StyleSheet.create({
   },
   buttonContents: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     borderTopWidth: 1,
-    borderColor: '#EBE4E5',
+    borderColor: '#F0F4F7',
     padding: 5,
-    backgroundColor: '#F8F5EF',
+    backgroundColor: '#FFFFFF',
     paddingVertical: 10,
   },
   img: {
     width: 32,
     height: 32,
-    marginHorizontal: 10,
     backgroundColor: 'transparent',
   },
   section: {
