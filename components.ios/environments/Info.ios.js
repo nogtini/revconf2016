@@ -5,7 +5,8 @@ var {
   ScrollView,
   StyleSheet,
   Text,
-  View
+  View,
+  StatusBar
   } = React;
 
 var NUM_ITEMS = 20;
@@ -31,9 +32,13 @@ var ScrollViewSimpleExample = React.createClass({
     // One of the items is a horizontal scroll view
     var items = this.makeItems(NUM_ITEMS, styles.itemWrapper);
     items[4] = (
-      <ScrollView key={'scrollView'} horizontal={true}>
-        {this.makeItems(NUM_ITEMS, [styles.itemWrapper, styles.horizontalItemWrapper])}
-      </ScrollView>
+      <View>
+        <StatusBar
+          hidden={true} />
+        <ScrollView key={'scrollView'} horizontal={true}>
+          {this.makeItems(NUM_ITEMS, [styles.itemWrapper, styles.horizontalItemWrapper])}
+        </ScrollView>
+      </View>
     );
 
     var verticalScrollView = (

@@ -136,9 +136,7 @@ var ListViewPagingExample = React.createClass({
     return (
       <View>
         <StatusBar
-          backgroundColor="blue"
-          barStyle="default"
-        />
+          hidden={true} />
         <TouchableOpacity onPress={this._onPressHeader} style={styles.header}>
           {headerLikeText}
           <View>

@@ -40,9 +40,7 @@ class revconf2016 extends Component {
           selected={this.state.selectedTab === 'info'}
           icon={require('./flux.png')}
           onPress={()=>this.setState({selectedTab:'info'})}>
-          <View>
-            <Info />
-          </View>
+          <Info />
         </TabBarIOS.Item>
       </TabBarIOS>
     );
