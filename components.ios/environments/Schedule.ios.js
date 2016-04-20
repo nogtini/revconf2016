@@ -3,13 +3,14 @@
 var React = require('react-native');
 var {
   Image,
-  LayoutAnimation,
   ListView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  StatusBar
+  StatusBar,
+  Modal,
+  TouchableHighlight
   } = React;
 
 var NativeModules = require('NativeModules');
@@ -31,12 +32,47 @@ var THUMB_URLS = [
   require('./Thumbnails/superlike.png'),
   require('./Thumbnails/victory.png'),
 ];
-var NUM_SECTIONS = 6;
-var NUM_ROWS_PER_SECTION = 5;
+var NUM_SECTIONS = 10;
+var NUM_ROWS_PER_SECTION = 1;
+
+var Button = React.createClass({
+  getInitialState() {
+    return {
+      active: false,
+    };
+  },
+
+  _onHighlight() {
+    this.setState({active: true});
+  },
+
+  _onUnhighlight() {
+    this.setState({active: false});
+  },
+
+  render() {
+    var colorStyle = {
+      color: this.state.active ? '#fff' : '#000',
+    };
+    return (
+      <TouchableHighlight
+        onHideUnderlay={this._onUnhighlight}
+        onPress={this.props.onPress}
+        onShowUnderlay={this._onHighlight}
+        style={[styles.button, this.props.style]}
+        underlayColor="#a9d9d4">
+        <Text style={[styles.buttonText, colorStyle]}>{this.props.children}</Text>
+      </TouchableHighlight>
+    );
+  }
+});
 
 var Thumb = React.createClass({
   getInitialState: function() {
-    return {thumbIndex: this._getThumbIdx(), dir: 'row'};
+    return {
+      thumbIndex: this._getThumbIdx(),
+      dir: 'row'
+    };
   },
   componentWillMount: function() {
     UIManager.setLayoutAnimationEnabledExperimental &&
@@ -46,8 +82,6 @@ var Thumb = React.createClass({
     return Math.floor(Math.random() * THUMB_URLS.length);
   },
   _onPressThumb: function() {
-    var config = layoutAnimationConfigs[this.state.thumbIndex % layoutAnimationConfigs.length];
-    LayoutAnimation.configureNext(config);
     this.setState({
       thumbIndex: this._getThumbIdx(),
       dir: this.state.dir === 'row' ? 'column' : 'row',
@@ -58,15 +92,8 @@ var Thumb = React.createClass({
       <TouchableOpacity
         onPress={this._onPressThumb}
         style={[styles.buttonContents, {flexDirection: this.state.dir}]}>
-        <Text>Hey there hi there</Text>
+        <Text style={styles.buttonText}>Hey there hi there</Text>
         <Image style={styles.img} source={THUMB_URLS[this.state.thumbIndex]} />
-        {this.state.dir === 'column' ?
-          <Text>
-            Oooo, look at this new text!  So awesome it may just be crazy.
-            Let me keep typing here so it wraps at least one line.
-          </Text> :
-          <Text />
-        }
       </TouchableOpacity>
     );
   }
@@ -97,7 +124,7 @@ var ListViewPagingExample = React.createClass({
     var sectionIDs = [];
     var rowIDs = [];
     for (var ii = 0; ii < NUM_SECTIONS; ii++) {
-      var sectionName = 'Section ' + ii;
+      var sectionName = '10:0' + ii + ' AM';
       sectionIDs.push(sectionName);
       dataBlob[sectionName] = sectionName;
       rowIDs[ii] = [];
@@ -111,6 +138,9 @@ var ListViewPagingExample = React.createClass({
     return {
       dataSource: dataSource.cloneWithRowsAndSections(dataBlob, sectionIDs, rowIDs),
       headerPressCount: 0,
+      animated: true,
+      modalVisible: false,
+      transparent: false
     };
   },
 
@@ -121,26 +151,60 @@ var ListViewPagingExample = React.createClass({
   renderSectionHeader: function(sectionData: string, sectionID: string) {
     return (
       <View style={styles.section}>
-        <Text style={styles.text}>
+        <Text style={[styles.text, styles.sectionText]}>
           {sectionData}
         </Text>
       </View>
     );
   },
 
+
+  //Modal stuff
+  _setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  },
+
+  _toggleAnimated() {
+    this.setState({animated: !this.state.animated});
+  },
+
+  _toggleTransparent() {
+    this.setState({transparent: !this.state.transparent});
+  },
+
   renderHeader: function() {
-    var headerLikeText = this.state.headerPressCount % 2 ?
-      <View><Text style={styles.text}>1 Like</Text></View> :
-      null;
+    var modalBackgroundStyle = {
+      backgroundColor: this.state.transparent ? 'rgba(0, 0, 0, 0.5)' : '#f5fcff',
+    };
+    var innerContainerTransparentStyle = this.state.transparent
+      ? {backgroundColor: '#fff', padding: 20}
+      : null;
+
     return (
       <View>
         <StatusBar
           hidden={true} />
-        <TouchableOpacity onPress={this._onPressHeader} style={styles.header}>
-          {headerLikeText}
+        <Modal
+          animated={this.state.animated}
+          transparent={this.state.transparent}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {this._setModalVisible(false)}}
+        >
+          <View style={[styles.container, modalBackgroundStyle]}>
+            <View style={[styles.innerContainer, innerContainerTransparentStyle]}>
+              <Text>This modal was presented {this.state.animated ? 'with' : 'without'} animation.</Text>
+              <Button
+                onPress={this._setModalVisible.bind(this, false)}
+                style={styles.modalButton}>
+                Close
+              </Button>
+            </View>
+          </View>
+        </Modal>
+        <TouchableOpacity onPress={this._setModalVisible.bind(this, true)} style={styles.header}>
           <View>
-            <Text style={styles.text}>
-              Table Header (click me)
+            <Text style={[styles.text, styles.headerText]}>
+              Schedule
             </Text>
           </View>
         </TouchableOpacity>
@@ -158,16 +222,12 @@ var ListViewPagingExample = React.createClass({
         renderFooter={this.renderFooter}
         renderSectionHeader={this.renderSectionHeader}
         renderRow={this.renderRow}
-        initialListSize={10}
-        pageSize={4}
         scrollRenderAheadDistance={500}
       />
     );
   },
 
   _onPressHeader: function() {
-    var config = layoutAnimationConfigs[Math.floor(this.state.headerPressCount / 2) % layoutAnimationConfigs.length];
-    LayoutAnimation.configureNext(config);
     this.setState({headerPressCount: this.state.headerPressCount + 1});
   },
 
@@ -181,7 +241,7 @@ var styles = StyleSheet.create({
     height: 250,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#432F44',
+    backgroundColor: '#EA5455',
     flexDirection: 'row',
   },
   text: {
@@ -200,8 +260,9 @@ var styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderTopWidth: 1,
+    borderBottomWidth: 1,
     borderColor: '#F0F4F7',
-    padding: 5,
+    padding: 15,
     backgroundColor: '#FFFFFF',
     paddingVertical: 10,
   },
@@ -214,42 +275,22 @@ var styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    padding: 6,
-    backgroundColor: '#A7425C',
+    padding: 5,
+    backgroundColor: '#F0F4F7',
   },
+  sectionText: {
+    fontSize: 10,
+    color: '#7F7F7F',
+    fontWeight: '500'
+  },
+  headerText: {
+    fontSize: 30,
+    fontWeight: 'bold'
+  },
+  buttonText: {
+    color: '#222831',
+    fontWeight: '300'
+  }
 });
-
-var animations = {
-  layout: {
-    spring: {
-      duration: 750,
-      create: {
-        duration: 300,
-        type: LayoutAnimation.Types.easeInEaseOut,
-        property: LayoutAnimation.Properties.opacity,
-      },
-      update: {
-        type: LayoutAnimation.Types.spring,
-        springDamping: 0.4,
-      },
-    },
-    easeInEaseOut: {
-      duration: 300,
-      create: {
-        type: LayoutAnimation.Types.easeInEaseOut,
-        property: LayoutAnimation.Properties.scaleXY,
-      },
-      update: {
-        delay: 100,
-        type: LayoutAnimation.Types.easeInEaseOut,
-      },
-    },
-  },
-};
-
-var layoutAnimationConfigs = [
-  animations.layout.spring,
-  animations.layout.easeInEaseOut,
-];
 
 module.exports = ListViewPagingExample;
