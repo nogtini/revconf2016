@@ -70,8 +70,7 @@ var Button = React.createClass({
 var Thumb = React.createClass({
   getInitialState: function() {
     return {
-      thumbIndex: this._getThumbIdx(),
-      dir: 'row'
+      thumbIndex: this._getThumbIdx()
     };
   },
   componentWillMount: function() {
@@ -83,15 +82,14 @@ var Thumb = React.createClass({
   },
   _onPressThumb: function() {
     this.setState({
-      thumbIndex: this._getThumbIdx(),
-      dir: this.state.dir === 'row' ? 'column' : 'row',
+      thumbIndex: this._getThumbIdx()
     });
   },
   render: function() {
     return (
       <TouchableOpacity
         onPress={this._onPressThumb}
-        style={[styles.buttonContents, {flexDirection: this.state.dir}]}>
+        style={[styles.buttonContents]}>
         <Text style={styles.buttonText}>Hey there hi there</Text>
         <Image style={styles.img} source={THUMB_URLS[this.state.thumbIndex]} />
       </TouchableOpacity>
