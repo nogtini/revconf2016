@@ -20,20 +20,6 @@ var {
   UIManager,
   } = NativeModules;
 
-var THUMB_URLS = [
-  require('./Thumbnails/like.png'),
-  require('./Thumbnails/dislike.png'),
-  require('./Thumbnails/call.png'),
-  require('./Thumbnails/fist.png'),
-  require('./Thumbnails/bandaged.png'),
-  require('./Thumbnails/flowers.png'),
-  require('./Thumbnails/heart.png'),
-  require('./Thumbnails/liking.png'),
-  require('./Thumbnails/party.png'),
-  require('./Thumbnails/poke.png'),
-  require('./Thumbnails/superlike.png'),
-  require('./Thumbnails/victory.png'),
-];
 var NUM_SECTIONS = 10;
 var NUM_ROWS_PER_SECTION = 1;
 
@@ -70,30 +56,17 @@ var Button = React.createClass({
 });
 
 var Thumb = React.createClass({
-  getInitialState: function() {
-    return {
-      thumbIndex: this._getThumbIdx()
-    };
-  },
   componentWillMount: function() {
     UIManager.setLayoutAnimationEnabledExperimental &&
     UIManager.setLayoutAnimationEnabledExperimental(true);
   },
-  _getThumbIdx: function() {
-    return Math.floor(Math.random() * THUMB_URLS.length);
-  },
-  _onPressThumb: function() {
-    this.setState({
-      thumbIndex: this._getThumbIdx()
-    });
-  },
   render: function() {
     return (
       <TouchableOpacity
-        onPress={this._onPressThumb}
+        onPress={this.null}
         style={[styles.buttonContents]}>
-        <Text style={styles.buttonText}>Hey there hi there</Text>
-        <Image style={styles.img} source={THUMB_URLS[this.state.thumbIndex]} />
+        <Text style={styles.buttonText}>Hey there hi there Hey there hi there Hey there hi there Hey there hi there </Text>
+        <Image style={styles.img} source={require('../../assets/img/pic.png')} />
       </TouchableOpacity>
     );
   }
@@ -268,18 +241,20 @@ var styles = StyleSheet.create({
     borderColor: '#F0F4F7',
     padding: 15,
     backgroundColor: '#FFFFFF',
-    paddingVertical: 10,
   },
   img: {
     width: 32,
     height: 32,
     backgroundColor: 'transparent',
+    borderWidth: 2,
+    borderColor: 'white',
+    borderRadius: 15
   },
   section: {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    padding: 5,
+    padding: 3,
     backgroundColor: '#F0F4F7',
   },
   sectionText: {
@@ -293,7 +268,8 @@ var styles = StyleSheet.create({
   },
   buttonText: {
     color: '#222831',
-    fontWeight: '300'
+    fontWeight: '300',
+    width: width/3*2
   },
   bgImage: {
     justifyContent: 'center',
