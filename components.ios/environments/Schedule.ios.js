@@ -1,6 +1,8 @@
 'use strict';
 
 var React = require('react-native');
+var Dimensions = require('Dimensions');
+
 var {
   Image,
   ListView,
@@ -200,11 +202,13 @@ var ListViewPagingExample = React.createClass({
           </View>
         </Modal>
         <TouchableOpacity onPress={this._setModalVisible.bind(this, true)} style={styles.header}>
-          <View>
-            <Text style={[styles.text, styles.headerText]}>
-              Schedule
-            </Text>
-          </View>
+            <View style={styles.bgImageWrapper}>
+              <Image style={styles.bgImage} source={require('../../assets/img/background.png')}>
+                <Text style={[styles.text, styles.headerText]}>
+                  Schedule
+                </Text>
+              </Image>
+            </View>
         </TouchableOpacity>
       </View>
     );
@@ -231,6 +235,8 @@ var ListViewPagingExample = React.createClass({
 
 });
 
+const {width} = Dimensions.get('window');
+
 var styles = StyleSheet.create({
   listview: {
     backgroundColor: '#FFFFFF',
@@ -239,7 +245,7 @@ var styles = StyleSheet.create({
     height: 250,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#EA5455',
+    backgroundColor: 'transparent',
     flexDirection: 'row',
   },
   text: {
@@ -288,7 +294,19 @@ var styles = StyleSheet.create({
   buttonText: {
     color: '#222831',
     fontWeight: '300'
-  }
+  },
+  bgImage: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    resizeMode: "stretch",
+    width: width,
+    height: 250
+  },
+  bgImageWrapper: {
+    position: 'absolute',
+    top: 0, bottom: 0, left: 0, right: 0
+  },
 });
 
 module.exports = ListViewPagingExample;
