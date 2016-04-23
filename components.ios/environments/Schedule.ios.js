@@ -62,12 +62,20 @@ var Thumb = React.createClass({
   },
   render: function() {
     return (
-      <TouchableOpacity
-        onPress={this.null}
-        style={[styles.buttonContents]}>
-        <Text style={styles.buttonText}>Hey there hi there Hey there hi there Hey there hi there Hey there hi there </Text>
-        <Image style={styles.img} source={require('../../assets/img/pic.png')} />
-      </TouchableOpacity>
+      <View>
+        <TouchableOpacity
+          onPress={this.null}
+          style={[styles.buttonContents]}>
+          <Text style={styles.buttonText}>Hey there hi there Hey there hi there Hey there hi there Hey there hi there </Text>
+          <Image style={styles.img} source={require('../../assets/img/pic.png')} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={this.null}
+          style={[styles.buttonContents]}>
+          <Text style={styles.buttonText}>Hey there hi there Hey there hi there Hey there hi there Hey there hi there </Text>
+          <Image style={styles.img} source={require('../../assets/img/pic.png')} />
+        </TouchableOpacity>
+        </View>
     );
   }
 });
@@ -209,13 +217,14 @@ var ListViewPagingExample = React.createClass({
 });
 
 const {width} = Dimensions.get('window');
+const headerHeight = width*2/3;
 
 var styles = StyleSheet.create({
   listview: {
     backgroundColor: '#FFFFFF',
   },
   header: {
-    height: 250,
+    height: headerHeight,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
@@ -236,11 +245,11 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderTopWidth: 1,
     borderBottomWidth: 1,
     borderColor: '#F0F4F7',
     padding: 15,
     backgroundColor: '#FFFFFF',
+    paddingVertical: 10,
   },
   img: {
     width: 32,
@@ -277,7 +286,7 @@ var styles = StyleSheet.create({
     flex: 1,
     resizeMode: "stretch",
     width: width,
-    height: 250
+    height: headerHeight
   },
   bgImageWrapper: {
     position: 'absolute',
