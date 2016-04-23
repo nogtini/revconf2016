@@ -111,13 +111,19 @@ var Thumb = React.createClass({
         <TouchableOpacity
           onPress={this._setModalVisible.bind(this, true)}
           style={[styles.buttonContents]}>
-          <Text style={styles.buttonText}>Hey there hi there Hey there hi there Hey there hi there Hey there hi there </Text>
+          <View>
+            <Text style={styles.buttonText}>Hey there hi there Hey there hi there Hey there hi there Hey there hi there </Text>
+            <Text style={styles.roomText}>VIRGINIA</Text>
+          </View>
           <Image style={styles.img} source={require('../../assets/img/pic.png')} />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={this.null}
           style={[styles.buttonContents]}>
-          <Text style={styles.buttonText}>Hey there hi there Hey there hi there Hey there hi there Hey there hi there </Text>
+          <View>
+            <Text style={styles.buttonText}>Hey there hi there </Text>
+            <Text style={styles.roomText}>VIRGINIA</Text>
+          </View>
           <Image style={styles.img} source={require('../../assets/img/pic.png')} />
         </TouchableOpacity>
         </View>
@@ -258,18 +264,19 @@ var styles = StyleSheet.create({
     paddingVertical: 10,
   },
   img: {
-    width: 32,
-    height: 32,
+    width: 40,
+    height: 40,
     backgroundColor: 'transparent',
     borderWidth: 2,
     borderColor: 'white',
-    borderRadius: 15
+    borderRadius: 20
   },
   section: {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    padding: 3,
+    padding: 5,
+    paddingVertical: 3,
     backgroundColor: '#F0F4F7',
   },
   sectionText: {
@@ -285,6 +292,11 @@ var styles = StyleSheet.create({
     color: '#222831',
     fontWeight: '300',
     width: width/3*2
+  },
+  roomText: {
+    fontSize: 10,
+    paddingTop: 5,
+    color: '#EA5455'
   },
   bgImage: {
     justifyContent: 'center',
