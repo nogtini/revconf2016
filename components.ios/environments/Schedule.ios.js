@@ -56,15 +56,60 @@ var Button = React.createClass({
 });
 
 var Thumb = React.createClass({
+  getInitialState: function() {
+    return {
+      animated: true,
+      modalVisible: false,
+      transparent: false
+    }
+  },
+
+  //Modal stuff
+  _setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  },
+
+  _toggleAnimated() {
+    this.setState({animated: !this.state.animated});
+  },
+
+  _toggleTransparent() {
+    this.setState({transparent: !this.state.transparent});
+  },
+
   componentWillMount: function() {
     UIManager.setLayoutAnimationEnabledExperimental &&
     UIManager.setLayoutAnimationEnabledExperimental(true);
   },
   render: function() {
+    var modalBackgroundStyle = {
+      backgroundColor: this.state.transparent ? 'rgba(0, 0, 0, 0.5)' : '#f5fcff',
+    };
+    var innerContainerTransparentStyle = this.state.transparent
+      ? {backgroundColor: '#fff', padding: 20}
+      : null;
+
     return (
       <View>
+        <Modal
+          animated={this.state.animated}
+          transparent={this.state.transparent}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {this._setModalVisible(false)}}
+        >
+          <View style={[styles.container, modalBackgroundStyle]}>
+            <View style={[styles.innerContainer, innerContainerTransparentStyle]}>
+              <Text>This modal was presented {this.state.animated ? 'with' : 'without'} animation.</Text>
+              <Button
+                onPress={this._setModalVisible.bind(this, false)}
+                style={styles.modalButton}>
+                Close
+              </Button>
+            </View>
+          </View>
+        </Modal>
         <TouchableOpacity
-          onPress={this.null}
+          onPress={this._setModalVisible.bind(this, true)}
           style={[styles.buttonContents]}>
           <Text style={styles.buttonText}>Hey there hi there Hey there hi there Hey there hi there Hey there hi there </Text>
           <Image style={styles.img} source={require('../../assets/img/pic.png')} />
@@ -119,14 +164,13 @@ var ListViewPagingExample = React.createClass({
     return {
       dataSource: dataSource.cloneWithRowsAndSections(dataBlob, sectionIDs, rowIDs),
       headerPressCount: 0,
-      animated: true,
-      modalVisible: false,
-      transparent: false
     };
   },
 
   renderRow: function(rowData: string, sectionID: string, rowID: string): ReactElement {
-    return (<Thumb text={rowData}/>);
+    return (
+      <Thumb text={rowData}/>
+    );
   },
 
   renderSectionHeader: function(sectionData: string, sectionID: string) {
@@ -139,50 +183,12 @@ var ListViewPagingExample = React.createClass({
     );
   },
 
-
-  //Modal stuff
-  _setModalVisible(visible) {
-    this.setState({modalVisible: visible});
-  },
-
-  _toggleAnimated() {
-    this.setState({animated: !this.state.animated});
-  },
-
-  _toggleTransparent() {
-    this.setState({transparent: !this.state.transparent});
-  },
-
   renderHeader: function() {
-    var modalBackgroundStyle = {
-      backgroundColor: this.state.transparent ? 'rgba(0, 0, 0, 0.5)' : '#f5fcff',
-    };
-    var innerContainerTransparentStyle = this.state.transparent
-      ? {backgroundColor: '#fff', padding: 20}
-      : null;
-
     return (
       <View>
         <StatusBar
           hidden={true} />
-        <Modal
-          animated={this.state.animated}
-          transparent={this.state.transparent}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {this._setModalVisible(false)}}
-        >
-          <View style={[styles.container, modalBackgroundStyle]}>
-            <View style={[styles.innerContainer, innerContainerTransparentStyle]}>
-              <Text>This modal was presented {this.state.animated ? 'with' : 'without'} animation.</Text>
-              <Button
-                onPress={this._setModalVisible.bind(this, false)}
-                style={styles.modalButton}>
-                Close
-              </Button>
-            </View>
-          </View>
-        </Modal>
-        <TouchableOpacity onPress={this._setModalVisible.bind(this, true)} style={styles.header}>
+        <TouchableOpacity style={styles.header}>
             <View style={styles.bgImageWrapper}>
               <Image style={styles.bgImage} source={require('../../assets/img/background.png')}>
                 <Text style={[styles.text, styles.headerText]}>
