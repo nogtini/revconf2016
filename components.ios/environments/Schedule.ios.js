@@ -188,7 +188,7 @@ var ListViewPagingExample = React.createClass({
       <View>
         <StatusBar
           hidden={true} />
-        <TouchableOpacity style={styles.header}>
+        <View style={styles.header}>
             <View style={styles.bgImageWrapper}>
               <Image style={styles.bgImage} source={require('../../assets/img/background.png')}>
                 <Text style={[styles.text, styles.headerText]}>
@@ -196,7 +196,7 @@ var ListViewPagingExample = React.createClass({
                 </Text>
               </Image>
             </View>
-        </TouchableOpacity>
+        </View>
       </View>
     );
   },
