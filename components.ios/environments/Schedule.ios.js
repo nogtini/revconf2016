@@ -20,8 +20,8 @@ var {
   UIManager,
   } = NativeModules;
 
-var NUM_SECTIONS = 10;
-var NUM_ROWS_PER_SECTION = 1;
+var NUM_SECTIONS = 8;
+var NUM_ROWS_PER_SECTION = 4;
 
 var Button = React.createClass({
   getInitialState() {
@@ -84,6 +84,7 @@ var Thumb = React.createClass({
   render: function() {
     var modalBackgroundStyle = {
       backgroundColor: this.state.transparent ? 'rgba(0, 0, 0, 0.5)' : '#f5fcff',
+      height: height
     };
     var innerContainerTransparentStyle = this.state.transparent
       ? {backgroundColor: '#fff', padding: 20}
@@ -113,15 +114,6 @@ var Thumb = React.createClass({
           style={[styles.buttonContents]}>
           <View>
             <Text style={styles.buttonText}>Hey there hi there Hey there hi there Hey there hi there Hey there hi there </Text>
-            <Text style={styles.roomText}>VIRGINIA</Text>
-          </View>
-          <Image style={styles.img} source={require('../../assets/img/pic.png')} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={this.null}
-          style={[styles.buttonContents]}>
-          <View>
-            <Text style={styles.buttonText}>Hey there hi there </Text>
             <Text style={styles.roomText}>VIRGINIA</Text>
           </View>
           <Image style={styles.img} source={require('../../assets/img/pic.png')} />
@@ -228,7 +220,7 @@ var ListViewPagingExample = React.createClass({
 
 });
 
-const {width} = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 const headerHeight = width*2/3;
 
 var styles = StyleSheet.create({
@@ -310,6 +302,9 @@ var styles = StyleSheet.create({
     position: 'absolute',
     top: 0, bottom: 0, left: 0, right: 0
   },
+  modalButton: {
+
+  }
 });
 
 module.exports = ListViewPagingExample;
