@@ -4,7 +4,11 @@ var React = require('react-native');
 var Dimensions = require('Dimensions');
 var _ = require('lodash');
 var data = require('../../utils/data.js');
-console.log(_.groupBy(data.people, 'time'));
+var timeOrderedData = _.groupBy(data.people, 'time');
+
+_(timeOrderedData).forEach((value, key) => {
+});
+
 
 var {
   Image,
@@ -116,7 +120,7 @@ var Thumb = React.createClass({
           onPress={this._setModalVisible.bind(this, true)}
           style={[styles.buttonContents]}>
           <View>
-            <Text style={styles.buttonText}>Hey there hi there Hey there hi there Hey there hi there Hey there hi there </Text>
+            <Text style={styles.buttonText}>{this.props.text}</Text>
             <Text style={styles.roomText}>VIRGINIA</Text>
           </View>
           <Image style={styles.img} source={require('../../assets/img/pic.png')} />
@@ -150,18 +154,24 @@ var ListViewPagingExample = React.createClass({
     var dataBlob = {};
     var sectionIDs = [];
     var rowIDs = [];
-    for (var ii = 0; ii < NUM_SECTIONS; ii++) {
-      var sectionName = '10:0' + ii + ' AM';
+    var timeSlots = _.keys(timeOrderedData);
+
+    for (var i = 0; i < timeSlots.length; i++) {
+      //sections
+      var sectionName = timeSlots[i];
       sectionIDs.push(sectionName);
       dataBlob[sectionName] = sectionName;
-      rowIDs[ii] = [];
+      rowIDs[i] = [];
 
-      for (var jj = 0; jj < NUM_ROWS_PER_SECTION; jj++) {
-        var rowName = 'S' + ii + ', R' + jj;
-        rowIDs[ii].push(rowName);
+      for (var j = 0; j < timeOrderedData[timeSlots[i]].length; j++) {
+        //rows
+        var rowName = 'S' + i + ', R' + j;
+        rowIDs[i].push(rowName);
         dataBlob[rowName] = rowName;
+        console.log(timeOrderedData[timeSlots[i]][j]);
       }
     }
+
     return {
       dataSource: dataSource.cloneWithRowsAndSections(dataBlob, sectionIDs, rowIDs),
       headerPressCount: 0,
