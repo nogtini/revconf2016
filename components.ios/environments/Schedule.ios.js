@@ -2,6 +2,9 @@
 
 var React = require('react-native');
 var Dimensions = require('Dimensions');
+var _ = require('lodash');
+var data = require('../../utils/data.js');
+console.log(_.groupBy(data.people, 'time'));
 
 var {
   Image,
@@ -204,7 +207,6 @@ var ListViewPagingExample = React.createClass({
       <ListView
         style={styles.listview}
         dataSource={this.state.dataSource}
-        onChangeVisibleRows={(visibleRows, changedRows) => console.log({visibleRows, changedRows})}
         renderHeader={this.renderHeader}
         renderFooter={this.renderFooter}
         renderSectionHeader={this.renderSectionHeader}
