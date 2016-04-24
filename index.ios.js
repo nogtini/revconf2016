@@ -37,13 +37,6 @@ class revconf2016 extends Component {
           <Schedule />
         </TabBarIOS.Item>
         <TabBarIOS.Item
-          title="Notifications"
-          selected={this.state.selectedTab === 'notifications'}
-          icon={require('./assets/img/notifications.png')}
-          onPress={()=>this.setState({selectedTab:'notifications'})}>
-          <Info />
-        </TabBarIOS.Item>
-        <TabBarIOS.Item
           title="Info"
           selected={this.state.selectedTab === 'info'}
           icon={require('./assets/img/info.png')}

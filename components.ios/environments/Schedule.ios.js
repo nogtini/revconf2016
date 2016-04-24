@@ -168,7 +168,6 @@ var ListViewPagingExample = React.createClass({
         var rowName = 'S' + i + ', R' + j;
         rowIDs[i].push(rowName);
         dataBlob[rowName] = rowName;
-        console.log(timeOrderedData[timeSlots[i]][j]);
       }
     }
 
