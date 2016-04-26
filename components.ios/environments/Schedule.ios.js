@@ -153,12 +153,14 @@ var Thumb = React.createClass({
           onRequestClose={() => {this._setModalVisible(false)}}
         >
           <View style={[styles.container, modalBackgroundStyle]}>
-            <View style={[styles.innerContainer, innerContainerTransparentStyle]}>
-              <Text>This modal was presented {this.state.animated ? 'with' : 'without'} animation.</Text>
-              <Button
-                onPress={this._setModalVisible.bind(this, false)}
-                style={styles.modalButton}>
-                Close
+            <View style={[styles.innerContainer, innerContainerTransparentStyle, styles.modalContainer]}>
+              <Image style={[styles.img, styles.modalImage]} source={imageWorkAround[this.props.image]} />
+              <Text>{this.props.name}</Text>
+              <Text>{this.props.title}</Text>
+              <Text>{this.props.description}</Text>
+              <Text>{this.props.bio}</Text>
+              <Button onPress={this._setModalVisible.bind(this, false)}>
+                <Text style={styles.modalButton}>Close</Text>
               </Button>
             </View>
           </View>
@@ -368,7 +370,19 @@ var styles = StyleSheet.create({
     top: 0, bottom: 0, left: 0, right: 0
   },
   modalButton: {
-
+    textAlign: 'center',
+    backgroundColor: '#FD444E'
+  },
+  modalContainer: {
+    alignItems: 'center',
+  },
+  modalImage: {
+    marginVertical: 25,
+    width: width/3,
+    height: width/3,
+    borderRadius: width/6,
+    borderColor: '#FD444E',
+    borderWidth: width/50,
   }
 });
 
