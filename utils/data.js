@@ -5,7 +5,8 @@ export let people = [
     title: 'Data Science essentials in Azure ML',
     description: '',
     time: '9:00 AM',
-    room: 'Virginia'
+    room: 'Virginia',
+    image: 'mostafaelzoghbi'
   },
   {
     name: 'Jason Straughan',
@@ -13,7 +14,8 @@ export let people = [
     title: 'Happy Developers are Better Developers',
     description: '',
     time: '9:00 AM',
-    room: 'Lynnhaven'
+    room: 'Lynnhaven',
+    image: 'jasonstraughan'
   },
   {
     name: 'Shahed Chowdhuri',
@@ -21,7 +23,8 @@ export let people = [
     title: 'Cross-Platform Web Apps with ASP.NET Core 1.0',
     description: '',
     time: '9:00 AM',
-    room: 'Chesapeake C'
+    room: 'Chesapeake C',
+    image: 'shahedchowdhuri'
   },
   {
     name: 'Kevin Jones',
@@ -29,7 +32,8 @@ export let people = [
     title: 'A Brief History of Cryptography',
     description: '',
     time: '9:00 AM',
-    room: 'Chesapeake AB'
+    room: 'Chesapeake AB',
+    image: 'kevinjones'
   },
   {
     name: 'David Nea',
@@ -37,7 +41,8 @@ export let people = [
     title: 'Cross- Platform Desktop Apps with Electron',
     description: '',
     time: '10:00 AM',
-    room: 'Virginia'
+    room: 'Virginia',
+    image: 'davidnea'
   },
   {
     name: 'Joey Di Nardo',
@@ -45,7 +50,8 @@ export let people = [
     title: 'Unifying Design and the Front- End with React and Atomic Components',
     description: '',
     time: '10:00 AM',
-    room: 'Lynnhaven'
+    room: 'Lynnhaven',
+    image: 'joeydinardo'
   },
   {
     name: 'David Bates',
@@ -53,7 +59,8 @@ export let people = [
     title: 'How to make IoT devices speak with fire',
     description: '',
     time: '10:00 AM',
-    room: 'Chesapeake C'
+    room: 'Chesapeake C',
+    image: 'davidbates'
   },
   {
     name: 'Mike Hostetler',
@@ -61,7 +68,8 @@ export let people = [
     title: 'Career advice for a OSS focused Software Developer',
     description: '',
     time: '10:00 AM',
-    room: 'Chesapeake AB'
+    room: 'Chesapeake AB',
+    image: 'mikehostetler'
   },
   {
     name: 'Heather Shapiro',
@@ -69,7 +77,8 @@ export let people = [
     title: 'Predicting Privilege with Python: Do Millennials make the grade?',
     description: '',
     time: '11:00 AM',
-    room: 'Virginia'
+    room: 'Virginia',
+    image: 'heathershapiro'
   },
   {
     name: 'Adina Shanholtz',
@@ -77,7 +86,8 @@ export let people = [
     title: 'Breaking into Gaming with Unity',
     description: '',
     time: '11:00 AM',
-    room: 'Lynnhaven'
+    room: 'Lynnhaven',
+    image: 'adinastanholtz'
   },
   {
     name: 'Will Boyd',
@@ -85,7 +95,8 @@ export let people = [
     title: 'Building Motion Detecting Web Apps with JavaScript',
     description: '',
     time: '11:00 AM',
-    room: 'Chesapeake C'
+    room: 'Chesapeake C',
+    image: 'willboyd'
   },
   {
     name: 'Ashley Williams',
@@ -93,7 +104,8 @@ export let people = [
     title: 'A Brief History and Mis-history of Modularity',
     description: '',
     time: '11:00 AM',
-    room: 'Chesapeake AB'
+    room: 'Chesapeake AB',
+    image: 'ashleywilliams'
   },
   {
     name: 'Matt Paddock',
@@ -101,7 +113,8 @@ export let people = [
     title: 'Get Hired Like A Boss',
     description: '',
     time: 'Lunch',
-    room: 'Lunch Room'
+    room: 'Lunch Room',
+    image: 'mattpaddock'
   },
   {
     name: 'Erika Carlson',
@@ -109,7 +122,8 @@ export let people = [
     title: 'How to Build a Developer: 10 Lessons from Apprenticeship',
     description: '',
     time: '1:30 PM',
-    room: 'Virginia'
+    room: 'Virginia',
+    image: 'erikacarlson'
   },
   {
     name: 'Devin Ivy',
@@ -117,7 +131,8 @@ export let people = [
     title: 'Polymer & App-state: Polymer, Flux. Flux, Polymer.',
     description: '',
     time: '1:30 PM',
-    room: 'Lynnhaven'
+    room: 'Lynnhaven',
+    image: 'devinivy'
   },
   {
     name: 'Brent Schooley',
@@ -125,7 +140,8 @@ export let people = [
     title: 'A Swift Introduction to Swift',
     description: '',
     time: '1:30 PM',
-    room: 'Chesapeake C'
+    room: 'Chesapeake C',
+    image: 'brentschooley'
   },
   {
     name: 'Erik Schlegel',
@@ -133,7 +149,8 @@ export let people = [
     title: 'Building React-Native on Windows',
     description: '',
     time: '1:30 PM',
-    room: 'Chesapeake AB'
+    room: 'Chesapeake AB',
+    image: 'erikschlegel'
   },
   {
     name: 'Mike Buckbee',
@@ -141,7 +158,8 @@ export let people = [
     title: 'Developers are Marketing Superheroes',
     description: '',
     time: '2:30 PM',
-    room: 'Virginia'
+    room: 'Virginia',
+    image: 'mikebuckbee'
   },
   {
     name: 'Michael Rollins',
@@ -149,7 +167,8 @@ export let people = [
     title: 'Building Bulletproof Mobile SDKs',
     description: '',
     time: '2:30 PM',
-    room: 'Lynnhaven'
+    room: 'Lynnhaven',
+    image: 'michaelrollins'
   },
   {
     name: 'David Makogon',
@@ -157,7 +176,8 @@ export let people = [
     title: 'Intro to Graph Databases',
     description: '',
     time: '2:30 PM',
-    room: 'Chesapeake C'
+    room: 'Chesapeake C',
+    image: 'davidmakogon'
   },
   {
     name: 'Pawel Szymczykowski',
@@ -165,7 +185,8 @@ export let people = [
     title: 'Why did the robot cross the road? Computer vision, robots and mobile games.',
     description: '',
     time: '2:30 PM',
-    room: 'Chesapeake AB'
+    room: 'Chesapeake AB',
+    image: 'pawelszymczykowski'
   },
   {
     name: 'Chris Keathley',
@@ -173,7 +194,8 @@ export let people = [
     title: 'Building the real-time web in Phoenix and Elixir',
     description: '',
     time: '3:30 PM',
-    room: 'Virginia'
+    room: 'Virginia',
+    image: 'chrisseathley'
   },
   {
     name: 'George Stocker',
@@ -181,7 +203,8 @@ export let people = [
     title: 'Ionic: JavaScript Everywhere (even mobile apps!)',
     description: '',
     time: '3:30 PM',
-    room: 'Lynnhaven'
+    room: 'Lynnhaven',
+    image: 'georgestocker'
   },
   {
     name: 'Julia Gao',
@@ -189,7 +212,8 @@ export let people = [
     title: 'How to Make Front-End Development More Functional',
     description: '',
     time: '3:30 PM',
-    room: 'Chesapeake C'
+    room: 'Chesapeake C',
+    image: 'juliagao'
   },
   {
     name: 'Aimee Knight',
@@ -197,7 +221,8 @@ export let people = [
     title: 'Getting Comfortable Being Uncomfortable',
     description: '',
     time: '3:30 PM',
-    room: 'Chesapeake AB'
+    room: 'Chesapeake AB',
+    image: 'aimeeknight'
   },
   {
     name: 'Bret Fisher',
@@ -205,7 +230,8 @@ export let people = [
     title: 'Docker for Noobs',
     description: '',
     time: '4:30 PM',
-    room: 'Virginia'
+    room: 'Virginia',
+    image: 'bretfisher'
   },
   {
     name: 'Travis Webb',
@@ -213,7 +239,8 @@ export let people = [
     title: ' I\'m unqualified to be CEO of anything. AND SO CAN YOU!',
     description: '',
     time: '4:30 PM',
-    room: 'Lynnhaven'
+    room: 'Lynnhaven',
+    image: 'traviswebb'
   },
   {
     name: 'G. Scott Singleton',
@@ -221,7 +248,8 @@ export let people = [
     title: '.NET MF - Brewing Beer with .NET',
     description: '',
     time: '4:30 PM',
-    room: 'Chesapeake C'
+    room: 'Chesapeake C',
+    image: 'gscottsingleton'
   },
   {
     name: 'John Athayde',
@@ -229,6 +257,7 @@ export let people = [
     title: 'How They Work Better Together: Lean UX, Agile Development and User-Centered Design',
     description: '',
     time: '4:30 PM',
-    room: 'Chesapeake AB'
+    room: 'Chesapeake AB',
+    image: 'johnathayde'
   }
 ]

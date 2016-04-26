@@ -123,7 +123,7 @@ var Thumb = React.createClass({
             <Text style={styles.buttonText}>{this.props.title}</Text>
             <Text style={styles.roomText}>{this.props.room.toUpperCase()}</Text>
           </View>
-          <Image style={styles.img} source={require('../../assets/img/pic.png')} />
+          <Image style={styles.img} source={require(`../../assets/img/speakers/${this.props.image}.png`)} />
         </TouchableOpacity>
         </View>
     );
@@ -174,7 +174,8 @@ var ListViewPagingExample = React.createClass({
           bio: timeOrderedData[timeSlots[i]][j].bio,
           title: timeOrderedData[timeSlots[i]][j].title,
           description: timeOrderedData[timeSlots[i]][j].description,
-          room: timeOrderedData[timeSlots[i]][j].room
+          room: timeOrderedData[timeSlots[i]][j].room,
+          image: timeOrderedData[timeSlots[i]][j].image
         };
       }
     }
@@ -187,7 +188,7 @@ var ListViewPagingExample = React.createClass({
 
   renderRow: function(rowData: string, sectionID: string, rowID: string): ReactElement {
     return (
-      <Thumb name={rowData.name} bio={rowData.bio} title={rowData.title} description={rowData.description} room={rowData.room}/>
+      <Thumb name={rowData.name} bio={rowData.bio} title={rowData.title} description={rowData.description} room={rowData.room} image={rowData.image}/>
     );
   },
 
