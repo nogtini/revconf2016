@@ -17,6 +17,7 @@ var {
   Text,
   TouchableOpacity,
   View,
+  ScrollView,
   StatusBar,
   Modal,
   TouchableHighlight
@@ -90,7 +91,7 @@ var Thumb = React.createClass({
   },
   render: function() {
     var modalBackgroundStyle = {
-      backgroundColor: this.state.transparent ? 'rgba(0, 0, 0, 0.5)' : '#f5fcff',
+      backgroundColor: this.state.transparent ? 'rgba(0, 0, 0, 0.5)' : 'white',
       height: height
     };
     var innerContainerTransparentStyle = this.state.transparent
@@ -152,18 +153,18 @@ var Thumb = React.createClass({
           visible={this.state.modalVisible}
           onRequestClose={() => {this._setModalVisible(false)}}
         >
-          <View style={[styles.container, modalBackgroundStyle]}>
+          <ScrollView style={[styles.container, modalBackgroundStyle]}>
             <View style={[styles.innerContainer, innerContainerTransparentStyle, styles.modalContainer]}>
               <Image style={[styles.img, styles.modalImage]} source={imageWorkAround[this.props.image]} />
-              <Text>{this.props.name}</Text>
-              <Text>{this.props.title}</Text>
-              <Text>{this.props.description}</Text>
-              <Text>{this.props.bio}</Text>
-              <Button onPress={this._setModalVisible.bind(this, false)}>
-                <Text style={styles.modalButton}>Close</Text>
+              <Text style={styles.modalName}>{this.props.name}</Text>
+              <Text style={styles.modalTitle}>{this.props.title}</Text>
+              <Text style={styles.modalDescription}>{this.props.description}</Text>
+              <Text style={styles.modalBio}>{this.props.bio}</Text>
+              <Button style={[styles.modalButton]}onPress={this._setModalVisible.bind(this, false)}>
+                <Image style={[styles.img, styles.modalCloseImage]} source={require('../../assets/img/closemodal.png')} />
               </Button>
             </View>
-          </View>
+          </ScrollView>
         </Modal>
         <TouchableOpacity
           onPress={this._setModalVisible.bind(this, true)}
@@ -378,7 +379,20 @@ var styles = StyleSheet.create({
   },
   modalContainer: {
     alignItems: 'center',
-    paddingHorizontal: width/10
+    paddingHorizontal: width/12
+  },
+  modalBio: {
+  },
+  modalName: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 18,
+    marginBottom: 10
+  },
+  modalTitle: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: '#FD444E'
   },
   modalImage: {
     marginVertical: 25,
@@ -386,7 +400,20 @@ var styles = StyleSheet.create({
     height: width/3,
     borderRadius: width/6,
     borderColor: '#FD444E',
-    borderWidth: width/50,
+    borderWidth: width/85,
+  },
+  modalButton: {
+    marginTop: 25,
+    alignItems: 'center',
+    alignSelf: 'center',
+    justifyContent: 'center',
+  },
+  modalCloseImage: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    width: width/6,
+    height: width/6,
   }
 });
 
