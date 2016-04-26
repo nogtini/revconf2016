@@ -167,7 +167,10 @@ var ListViewPagingExample = React.createClass({
         //rows
         var rowName = 'S' + i + ', R' + j;
         rowIDs[i].push(rowName);
-        dataBlob[rowName] = rowName;
+        dataBlob[rowName] = {
+          testOne: 'Test 1',
+          testTwo: 'Test 2',
+        };
       }
     }
 
@@ -179,7 +182,7 @@ var ListViewPagingExample = React.createClass({
 
   renderRow: function(rowData: string, sectionID: string, rowID: string): ReactElement {
     return (
-      <Thumb text={rowData}/>
+      <Thumb text={rowData.testTwo}/>
     );
   },
 
