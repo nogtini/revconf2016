@@ -335,12 +335,12 @@ var styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    padding: 5,
-    paddingVertical: 3,
+    padding: 6,
+    paddingVertical: 4,
     backgroundColor: '#F0F4F7',
   },
   sectionText: {
-    fontSize: 10,
+    fontSize: 11,
     color: '#7F7F7F',
     fontWeight: '500'
   },
@@ -350,12 +350,13 @@ var styles = StyleSheet.create({
   },
   buttonText: {
     color: '#222831',
-    fontWeight: '300',
+    fontWeight: '500',
+    fontSize: 14,
     width: width/3*2
   },
   roomText: {
-    fontSize: 10,
-    paddingTop: 5,
+    fontSize: 11,
+    paddingTop: 6,
   },
   bgImage: {
     justifyContent: 'center',
