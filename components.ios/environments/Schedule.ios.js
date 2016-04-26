@@ -371,10 +371,13 @@ var styles = StyleSheet.create({
   },
   modalButton: {
     textAlign: 'center',
-    backgroundColor: '#FD444E'
+    backgroundColor: '#FD444E',
+    alignSelf: 'center',
+    justifyContent: 'center'
   },
   modalContainer: {
     alignItems: 'center',
+    paddingHorizontal: width/10
   },
   modalImage: {
     marginVertical: 25,
