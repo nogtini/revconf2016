@@ -120,7 +120,7 @@ var Thumb = React.createClass({
           onPress={this._setModalVisible.bind(this, true)}
           style={[styles.buttonContents]}>
           <View>
-            <Text style={styles.buttonText}>{this.props.text}</Text>
+            <Text style={styles.buttonText}>{this.props.name}</Text>
             <Text style={styles.roomText}>VIRGINIA</Text>
           </View>
           <Image style={styles.img} source={require('../../assets/img/pic.png')} />
@@ -187,7 +187,7 @@ var ListViewPagingExample = React.createClass({
 
   renderRow: function(rowData: string, sectionID: string, rowID: string): ReactElement {
     return (
-      <Thumb text={rowData.testTwo}/>
+      <Thumb name={rowData.name} bio={rowData.bio} title={rowData.title} description={rowData.description} room={rowData.room}/>
     );
   },
 
