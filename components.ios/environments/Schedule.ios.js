@@ -120,8 +120,8 @@ var Thumb = React.createClass({
           onPress={this._setModalVisible.bind(this, true)}
           style={[styles.buttonContents]}>
           <View>
-            <Text style={styles.buttonText}>{this.props.name}</Text>
-            <Text style={styles.roomText}>VIRGINIA</Text>
+            <Text style={styles.buttonText}>{this.props.title}</Text>
+            <Text style={styles.roomText}>{this.props.room.toUpperCase()}</Text>
           </View>
           <Image style={styles.img} source={require('../../assets/img/pic.png')} />
         </TouchableOpacity>
