@@ -129,8 +129,19 @@ var Thumb = React.createClass({
       'traviswebb' : require(`../../assets/img/speakers/traviswebb.png`),
       'gscottsingleton' : require(`../../assets/img/speakers/gscottsingleton.png`),
       'johnathayde' : require(`../../assets/img/speakers/johnathayde.png`),
+    };
 
-
+    function roomColorStyle(roomName) {
+      switch(roomName){
+        case 'Virginia':
+          return {color: '#FD444E'};
+        case 'Lynnhaven':
+          return {color: '#00B0B7'};
+        case 'Chesapeake AB':
+          return {color: '#620087'};
+        case 'Chesapeake C':
+          return {color: '#FFD443'};
+      }
     };
 
     return (
@@ -157,7 +168,7 @@ var Thumb = React.createClass({
           style={[styles.buttonContents]}>
           <View>
             <Text style={styles.buttonText}>{this.props.title}</Text>
-            <Text style={styles.roomText}>{this.props.room.toUpperCase()}</Text>
+            <Text style={[styles.roomText, roomColorStyle(this.props.room)]}>{this.props.room.toUpperCase()}</Text>
           </View>
           <Image style={styles.img} source={imageWorkAround[this.props.image]} />
         </TouchableOpacity>
@@ -344,7 +355,6 @@ var styles = StyleSheet.create({
   roomText: {
     fontSize: 10,
     paddingTop: 5,
-    color: '#EA5455'
   },
   bgImage: {
     justifyContent: 'center',
