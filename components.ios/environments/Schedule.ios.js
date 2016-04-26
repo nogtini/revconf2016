@@ -160,9 +160,11 @@ var Thumb = React.createClass({
               <Text style={styles.modalTitle}>{this.props.title}</Text>
               <Text style={styles.modalDescription}>{this.props.description}</Text>
               <Text style={styles.modalBio}>{this.props.bio}</Text>
-              <Button style={[styles.modalButton]}onPress={this._setModalVisible.bind(this, false)}>
-                <Image style={[styles.img, styles.modalCloseImage]} source={require('../../assets/img/closemodal.png')} />
-              </Button>
+              <TouchableHighlight underlayColor="#F78C6F" style={[styles.modalButton]} onPress={this._setModalVisible.bind(this, false)}>
+                <View>
+                  <Text style={styles.modalCloseText}>Close</Text>
+                </View>
+              </TouchableHighlight>
             </View>
           </ScrollView>
         </Modal>
@@ -371,12 +373,6 @@ var styles = StyleSheet.create({
     position: 'absolute',
     top: 0, bottom: 0, left: 0, right: 0
   },
-  modalButton: {
-    textAlign: 'center',
-    backgroundColor: '#FD444E',
-    alignSelf: 'center',
-    justifyContent: 'center'
-  },
   modalContainer: {
     alignItems: 'center',
     paddingHorizontal: width/12
@@ -403,17 +399,22 @@ var styles = StyleSheet.create({
     borderWidth: width/85,
   },
   modalButton: {
-    marginTop: 25,
-    alignItems: 'center',
+    backgroundColor: '#FD444E',
     alignSelf: 'center',
     justifyContent: 'center',
+    marginVertical: 25,
+    alignItems: 'center',
+    paddingVertical: 10,
+    borderRadius: 8,
   },
-  modalCloseImage: {
+  modalCloseText: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: 'white',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    width: width/6,
-    height: width/6,
+    width: width/2,
   }
 });
 
