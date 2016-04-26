@@ -36,13 +36,13 @@ export let people = [
     image: 'kevinjones'
   },
   {
-    name: 'David Nea',
+    name: 'David Neal',
     bio: '',
     title: 'Cross- Platform Desktop Apps with Electron',
     description: '',
     time: '10:00 AM',
     room: 'Virginia',
-    image: 'davidnea'
+    image: 'davidneal'
   },
   {
     name: 'Joey Di Nardo',
@@ -144,13 +144,13 @@ export let people = [
     image: 'brentschooley'
   },
   {
-    name: 'Erik Schlegel',
+    name: 'Erik Schegel',
     bio: '',
     title: 'Building React-Native on Windows',
     description: '',
     time: '1:30 PM',
     room: 'Chesapeake AB',
-    image: 'erikschlegel'
+    image: 'erikschegel'
   },
   {
     name: 'Mike Buckbee',
@@ -195,7 +195,7 @@ export let people = [
     description: '',
     time: '3:30 PM',
     room: 'Virginia',
-    image: 'chrisseathley'
+    image: 'chriskeathley'
   },
   {
     name: 'George Stocker',

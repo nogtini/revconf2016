@@ -97,6 +97,42 @@ var Thumb = React.createClass({
       ? {backgroundColor: '#fff', padding: 20}
       : null;
 
+    //terrible workaround for dynamic images
+    //https://github.com/facebook/react-native/issues/282
+    const imageWorkAround = {
+      'mostafaelzoghbi' : require(`../../assets/img/speakers/mostafaelzoghbi.png`),
+      'jasonstraughan' : require(`../../assets/img/speakers/jasonstraughan.png`),
+      'shahedchowdhuri' : require(`../../assets/img/speakers/shahedchowdhuri.png`),
+      'kevinjones' : require(`../../assets/img/speakers/kevinjones.png`),
+      'davidneal' : require(`../../assets/img/speakers/davidneal.png`),
+      'joeydinardo' : require(`../../assets/img/speakers/joeydinardo.png`),
+      'davidbates' : require(`../../assets/img/speakers/davidbates.png`),
+      'mikehostetler' : require(`../../assets/img/speakers/mikehostetler.png`),
+      'heathershapiro' : require(`../../assets/img/speakers/heathershapiro.png`),
+      'adinastanholtz' : require(`../../assets/img/speakers/adinastanholtz.png`),
+      'willboyd' : require(`../../assets/img/speakers/willboyd.png`),
+      'ashleywilliams' : require(`../../assets/img/speakers/ashleywilliams.png`),
+      'mattpaddock' : require(`../../assets/img/speakers/mattpaddock.png`),
+      'erikacarlson' : require(`../../assets/img/speakers/erikacarlson.png`),
+      'devinivy' : require(`../../assets/img/speakers/devinivy.png`),
+      'brentschooley' : require(`../../assets/img/speakers/brentschooley.png`),
+      'erikschegel' : require(`../../assets/img/speakers/erikschegel.png`),
+      'mikebuckbee' : require(`../../assets/img/speakers/mikebuckbee.png`),
+      'michaelrollins' : require(`../../assets/img/speakers/michaelrollins.png`),
+      'davidmakogon' : require(`../../assets/img/speakers/davidmakogon.png`),
+      'pawelszymczykowski' : require(`../../assets/img/speakers/pawelszymczykowski.png`),
+      'chriskeathley' : require(`../../assets/img/speakers/chriskeathley.png`),
+      'georgestocker' : require(`../../assets/img/speakers/georgestocker.png`),
+      'juliagao' : require(`../../assets/img/speakers/juliagao.png`),
+      'aimeeknight' : require(`../../assets/img/speakers/aimeeknight.png`),
+      'bretfisher' : require(`../../assets/img/speakers/bretfisher.png`),
+      'traviswebb' : require(`../../assets/img/speakers/traviswebb.png`),
+      'gscottsingleton' : require(`../../assets/img/speakers/gscottsingleton.png`),
+      'johnathayde' : require(`../../assets/img/speakers/johnathayde.png`),
+
+
+    };
+
     return (
       <View>
         <Modal
@@ -123,7 +159,7 @@ var Thumb = React.createClass({
             <Text style={styles.buttonText}>{this.props.title}</Text>
             <Text style={styles.roomText}>{this.props.room.toUpperCase()}</Text>
           </View>
-          <Image style={styles.img} source={require(`../../assets/img/speakers/${this.props.image}.png`)} />
+          <Image style={styles.img} source={imageWorkAround[this.props.image]} />
         </TouchableOpacity>
         </View>
     );
